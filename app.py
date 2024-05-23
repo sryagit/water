@@ -23,4 +23,13 @@ def main():
     conductivity = st.slider('Conductivity', 0.0, 5000.0, 2500.0, 10.0)
     organic_carbon = st.slider('Organic Carbon', 0.0, 50.0, 25.0, 0.1)
     trihalomethanes = st.slider('Trihalomethanes', 0.0, 150.0, 75.0, 0.1)
-    turbidity = st.slider('Turbidity', 0.0, 10.
+    turbidity = st.slider('Turbidity', 0.0, 10.0, 5.0, 0.1)
+    if st.button('Predict'):
+        result = predict_potability(ph, hardness, solids, chloramines, sulfate, conductivity, organic_carbon, trihalomethanes, turbidity)
+        if result == 0:
+            st.write('The water is not potable.')
+        else:
+            st.write('The water is potable.')
+
+if __name__ == '__main__':
+    main()
